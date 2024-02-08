@@ -1,9 +1,16 @@
+body{
+    background-color: black;
+}
 .container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
     height: 100vh;
+    justify-content: space-around;
+    border: 1px solid white;
 }
+
+  
 .tooltip{
     position: relative;
     display: inline-block;
@@ -11,31 +18,46 @@
     width: 200px;
     height: 200PX;
     background-color: red;
-    margin-top: 50px;
-   
+    border-radius: 50%;
 }
- .tooltip .tooltiptext{
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    border-bottom: 200px solid yellow; /* Change 'red' to any color you want */
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+ .tooltip .tooltiptext, .triangle .tooltiptext{
     visibility: hidden;
-    width: 50px;
+    width: 150px;
     background-color: red;
     color: white;
     text-align: center;
-    padding-left: 5px 0;
+    padding: 5px ;
     border-radius: 6px;
     position: absolute;
     z-index: 1;
-    margin-top: -30px;
+    margin-top: -40px;
     left: 50%;
     transform: translateX(-50%);
     transition: 1s;
     opacity: 0;
 }
-.tooltip:hover .tooltiptext{
+ .triangle .tooltiptext{
+    background-color: yellow;
+    margin-top: -55PX;
+    color: black;
+}
+.tooltip:hover .tooltiptext, .triangle:hover .tooltiptext{
     visibility: visible;
     opacity: 1;
     transition: 0.2s;
 }
-.tooltip .tooltiptext::before {
+.tooltip .tooltiptext::before, .triangle .tooltiptext::before {
     content: '';
     position: absolute;
     top: 100%; 
@@ -45,10 +67,18 @@
     border-top-color: red;
     transform: translateX(-50%); 
   }
+   .triangle .tooltiptext::before {
+    border-top-color:yellow;
+  }
   @media screen and (max-width:600px) {
     .tooltip{
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
+    }
+      .triangle{
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-bottom: 100px solid yellow;
     }
   }
 
